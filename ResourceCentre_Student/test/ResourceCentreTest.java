@@ -82,12 +82,34 @@ public class ResourceCentreTest {
 	public void testRetrieveAllChromebook() {
 		//fail("Not yet implemented");
 		// write your code here
+		
 	}
 
 	@Test
 	public void testDoLoanCamcorder() {
 		//fail("Not yet implemented");
 		// write your code here
+		//boundary condition
+		assertNotNull("Check that there is a valid Cancorder ArrayList to loan from ",camcorderList);
+		
+//		normal condition
+		ResourceCentre.addCamcorder(camcorderList,cc1);
+		Boolean ok = ResourceCentre.doLoanCamcorder(camcorderList, "CC0011", "7-7-2021");
+		assertTrue("is the item available to loan?",ok);
+		
+//		Error condition
+		ok = ResourceCentre.doLoanCamcorder(camcorderList, "CC0011", "26-7-2021" );
+		assertFalse("Test if the same item is not ok to loan again", ok);
+		
+//		Error condition
+		ResourceCentre.addCamcorder(camcorderList, cc2);
+		cc2.setIsAvailable(false);
+		ok = ResourceCentre.doLoanCamcorder(camcorderList, "CC0012" , "26-7-2021");
+		assertFalse("Test that an un-available item cannot be loaned",ok);
+		
+//		Error condition
+		ok = ResourceCentre.doLoanCamcorder(camcorderList, "CC1234", "26-7-2021");
+		assertFalse("Test that non-existing item cannot be loaned",ok);
 		
 	}
 	
@@ -95,6 +117,29 @@ public class ResourceCentreTest {
 	public void testDoLoanChromebook() {
 		//fail("Not yet implemented");
 		// write your code here
+		//boundary condition
+		assertNotNull("Check that there is a valid Cancorder ArrayList to loan from ",chromebookList);
+		
+//		normal condition
+		ResourceCentre.addChromebook(chromebookList,cb1);
+		Boolean ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0011", "7-7-2021");
+		assertTrue("is the item available to loan?",ok);
+		
+//		Error condition
+		ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0011", "26-7-2021" );
+		assertFalse("Test if the same item is not ok to loan again", ok);
+		
+//		Error condition
+		ResourceCentre.addChromebook(chromebookList, cb2);
+		cb2.setIsAvailable(false);
+		ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0012" , "26-7-2021");
+		assertFalse("Test that an un-available item cannot be loaned",ok);
+		
+//		Error condition
+		ok = ResourceCentre.doLoanChromebook(chromebookList, "CB1234", "26-7-2021");
+		assertFalse("Test that non-existing item cannot be loaned",ok);
+		
+		
 	}
 	
 	@Test
