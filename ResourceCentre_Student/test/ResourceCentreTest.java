@@ -133,7 +133,7 @@ public class ResourceCentreTest {
 		
 //		normal condition
 		ResourceCentre.addCamcorder(camcorderList,cc1);
-		Boolean ok = ResourceCentre.doLoanCamcorder(camcorderList, "CC0011", "7-7-2021");
+		Boolean ok = ResourceCentre.doLoanCamcorder(camcorderList, "CC0011", "26-7-2021");
 		assertTrue("is the item available to loan?",ok);
 		
 //		Error condition
@@ -164,7 +164,7 @@ public class ResourceCentreTest {
 		
 //		normal condition
 		ResourceCentre.addChromebook(chromebookList,cb1);
-		Boolean ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0011", "7-7-2021");
+		Boolean ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0011", "26-7-2021");
 		assertTrue("is the item available to loan?",ok);
 		
 //		Error condition
